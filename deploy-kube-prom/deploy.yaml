@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-prom
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: go-prom
+  template:
+    metadata:
+      labels:
+        name: go-prom
+    spec:
+      containers:
+        - name: application
+          image: dharmayuset/golang-prom
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 2112

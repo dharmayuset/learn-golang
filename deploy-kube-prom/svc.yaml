@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-web-service
+  labels:
+    environment: prod
+    type: monitor
+spec:
+  type: LoadBalancer
+  ports:
+  - name: web
+    port: 80
+    targetPort: 2112
+  selector:
+    name: go-prom
