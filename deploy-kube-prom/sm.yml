@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: apps
+  namespace: monitoring
+  labels:
+    name: apps
+spec:
+  selector:
+    matchLabels:
+     environment: prod
+     monitoring: "true"
+  namespaceSelector:
+    any: true
+  endpoints:
+    - port: apps
